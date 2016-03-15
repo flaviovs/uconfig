@@ -1,6 +1,6 @@
 {
     "name": "flaviovs/uconfig",
-    "description": "Simple, no frills, configuration class",
+    "description": "A micro, no frills, configuration interface for PHP",
     "type": "library",
     "require-dev": {
         "phpunit/phpunit": "^5.2",
