@@ -2,9 +2,9 @@
 
 namespace UConfig;
 
-class ConfigException extends \Exception {}
-class ConfigSectionNotFoundException extends ConfigException {}
-class ConfigKeyNotFoundException extends ConfigException {}
+class Exception extends \Exception {}
+class SectionNotFoundException extends Exception {}
+class OptionNotFoundException extends Exception {}
 
 
 interface Handler {
@@ -45,11 +45,11 @@ class Config {
 			$this->reload();
 
 		if (!array_key_exists($section, $this->conf)) {
-			throw new ConfigSectionNotFound($section);
+			throw new SectionNotFoundException($section);
 		}
 
 		if ( !array_key_exists($key, $this->conf[$section])) {
-			throw new ConfigKeyNotFound($key);
+			throw new OptionNotFoundException($key);
 		}
 
 		return $this->conf[$section][$key];
