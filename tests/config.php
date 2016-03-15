@@ -16,4 +16,25 @@ class ConfigTestCase extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($defaults, $cfg->getItems());
 	}
+
+	public function testGet() {
+		$cfg = new Config([
+			                  'section' => [
+				                  'a' => 'b',
+			                  ],
+		                  ]);
+		$this->assertEquals($cfg->get('section', 'a'), 'b');
+	}
+
+	public function testNonexistentSectionThrowsException() {
+		$cfg = new Config();
+		$this->setExpectedException('UConfig\SectionNotFoundException');
+		$cfg->get('foo', 'bar');
+	}
+
+	public function testNonexistentOptionThrowsException() {
+		$cfg = new Config(['section' => []]);
+		$this->setExpectedException('UConfig\OptionNotFoundException');
+		$cfg->get('section', 'bar');
+	}
 }
