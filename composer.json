@@ -13,7 +13,9 @@
             "email": "flaviovs@magnux.com"
         }
     ],
-	"require": {},
+	"require": {
+		"php": ">=5.4"
+	},
 	"autoload": {
 		"classmap": ["src/"]
 	}
